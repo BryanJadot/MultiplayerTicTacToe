@@ -1,10 +1,8 @@
-import React from "react";
-import Board from "../features/board/Board";
+import React from 'react';
+import Board from '../features/board/Board';
 
 function App() {
-	return (
-		<Board />
-	);
+  return <Board />;
 }
 
 export default App;
