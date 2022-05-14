@@ -1,11 +1,9 @@
 import React from "react";
-import "./App.css";
+import Board from "../features/board/Board";
 
 function App() {
 	return (
-		<div>
-      Something cool
-		</div>
+		<Board />
 	);
 }
 
