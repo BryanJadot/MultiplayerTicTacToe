@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 // eslint-disable-next-line import/no-cycle
 import { RootState } from '../../app/store';
@@ -112,20 +114,15 @@ const boardSlice = createSlice({
   name: 'board',
   initialState,
   reducers: {
-    makeMove: (state, action: PayloadAction<BoardPosition>): BoardState => {
-      const newBoard = state.board;
-      newBoard[action.payload.r][action.payload.c] = state.currentTurn;
-
+    makeMove: (state, action: PayloadAction<BoardPosition>) => {
+      state.board[action.payload.r][action.payload.c] = state.currentTurn;
       const winCheck = checkForWin(state.board, state.currentTurn);
+      state.winState = winCheck.winState;
+      if (winCheck.winningSquares) {
+        state.winningSquares = winCheck.winningSquares;
+      }
 
-      return {
-        playerX: state.playerX,
-        playerO: state.playerO,
-        currentTurn: state.currentTurn === 'X' ? 'O' : 'X',
-        board: newBoard,
-        winState: winCheck.winState,
-        winningSquares: winCheck.winningSquares,
-      };
+      state.currentTurn = state.currentTurn === 'X' ? 'O' : 'X';
     },
     restartGame: (): BoardState => initialState,
   },
@@ -139,25 +136,3 @@ export const selectWinningSquares = (state: RootState) =>
   state.board.winningSquares;
 
 export default boardSlice.reducer;
-
-/*
-    makeMove: (state, action: PayloadAction<BoardPosition>) => {
-      state.board[action.payload.r][action.payload.c] = state.currentTurn;
-      const winCheck = checkForWin(state.board, state.currentTurn);
-      state.winState = winCheck.winState;
-      if (winCheck.winningSquares) {
-        state.winningSquares = winCheck.winningSquares;
-      }
-
-      state.currentTurn = state.currentTurn === 'X' ? 'O' : 'X';
-    },
-    restartGame: (state) => initialState
-      state.playerX = initialState.playerX;
-      state.playerO = initialState.playerO;
-      state.currentTurn = initialState.currentTurn;
-      state.board = initialState.board;
-      state.winState = initialState.winState;
-      state.winningSquares = initialState.winningSquares;
-    },
-  },
-	*/
