@@ -1,42 +1,42 @@
 .square {
-	background: white;
-	color: black;
-	border: 1px solid black;
-	height: 200px;
-	width: 200px;
-	font-size: 24px;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  height: 200px;
+  width: 200px;
+  font-size: 24px;
 
-	&.winningSquare {
-		color: red;
-		border: 1px solid red;
-	}
+  &.winningSquare {
+    color: red;
+    border: 1px solid red;
+  }
 }
 
 .row {
-	display: flex;
-	flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .board {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .restartButton {
-	font-size: inherit;
+  font-size: inherit;
 }
 
 .topBar {
-	display: flex;
-	flex-direction: row;
-	margin-bottom: 10px;
-	font-size: 24px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  font-size: 24px;
 }
 
 .gameStatus {
-	margin-left: 10px;
+  margin-left: 10px;
 
-	&.gameOver {
-		color: red;
-	}
+  &.gameOver {
+    color: red;
+  }
 }
