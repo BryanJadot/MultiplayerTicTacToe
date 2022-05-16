@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  offline-development-api
+
+Globals:
+  Function:
+    Timeout: 60
+
+Resources:
+  MakeMoveFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: make-move/
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
+      Events:
+        GetItem:
+          Type: Api
+          Properties:
+            Path: /make_move/{row}/{column}
+            Method: get
+      Environment:
+        Variables:
+          USE_LOCAL_DYNAMODB: "false"
+
+  RestartGameFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: restart-game/
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
+      Events:
+        GetItem:
+          Type: Api
+          Properties:
+            Path: /restart_game
+            Method: get
+      Environment:
+        Variables:
+          USE_LOCAL_DYNAMODB: "false"

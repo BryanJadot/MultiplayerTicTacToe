@@ -1,5 +1,5 @@
 {
-  "name": "multiplayertictactoe",
+  "name": "multiplayertictactoeserver",
   "version": "0.1.0",
   "description": "Example project for AWS serverless",
   "main": "index.js",
@@ -44,6 +44,7 @@
     "typescript": "^4.6.4"
   },
   "workspaces": [
-    "client"
+    "client",
+    "server"
   ]
 }
